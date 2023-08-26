@@ -14,4 +14,8 @@ router.post('/trip/transaction', async (req: Express.Request, res: Express.Respo
     await tripController.Transaction(req, res);
 });
 
+router.get('/trip/available', async (req: Express.Request, res: Express.Response) => {
+    await tripController.AvailableTrips(req, res);
+});
+
 export default router;
