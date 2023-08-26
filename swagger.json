@@ -72,6 +72,45 @@
       "/trip/available": {
         "get": {
           "summary": "Gets all available trips",
+          "parameters": [
+            {
+              "name": "city",
+              "in": "query",
+              "description": "Filter trips by city",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "date",
+              "in": "query",
+              "description": "Filter trips by date",
+              "schema": {
+                "type": "string",
+                "format": "date"
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "description": "Limit the number of results",
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100
+              }
+            },
+            {
+              "name": "take",
+              "in": "query",
+              "description": "Takes the first n results",
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100
+              }
+            }
+          ],
           "responses": {
             "200": {
               "description": "Success",
