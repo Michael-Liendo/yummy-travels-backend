@@ -5,6 +5,8 @@ import { connectDB } from "./db/inde";
 import dotnev from "dotenv";
 dotnev.config();
 
+import cors from "cors";
+
 const app: express.Application = express();
 const port = process.env.PORT || 8888;
 
@@ -13,6 +15,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(express.json());
+app.use(cors());
 
 app.use(routesV1);
 
