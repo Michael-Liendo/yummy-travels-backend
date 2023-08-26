@@ -1,0 +1,32 @@
+{
+  "name": "yummy-backend",
+  "version": "0.0.1",
+  "description": "Yummy Travel Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx ts-node-dev --respawn --transpile-only ./src/index.ts",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yummy-Travel/yummy-backend.git"
+  },
+  "author": "Yummy Travel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Yummy-Travel/yummy-backend/issues"
+  },
+  "homepage": "https://github.com/Yummy-Travel/yummy-backend#readme",
+  "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  }
+}
