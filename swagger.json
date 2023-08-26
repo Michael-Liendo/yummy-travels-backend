@@ -1,0 +1,202 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "My API",
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000"
+      }
+    ],
+    "paths": {
+      "/trip/book": {
+        "post": {
+          "summary": "Books a trip",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BookTripRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/trip/transaction": {
+        "post": {
+          "summary": "Performs a transaction",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "BookTripRequest": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          "required": [
+            "name",
+            "date"
+          ]
+        },
+        "TransactionRequest": {
+          "type": "object",
+          "properties": {
+            "transactionId": {
+              "type": "number"
+            },
+            "routeId": {
+              "type": "number"
+            },
+            "price": {
+              "type": "number"
+            },
+            "date": {
+              "type": "string",
+              "format": "date"
+            },
+            "ticketId": {
+              "type": "number"
+            },
+            "completed": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "transactionId",
+            "routeId",
+            "price",
+            "date",
+            "ticketId",
+            "completed"
+          ]
+        },
+        "Trip": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "number"
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "bus",
+                "ship",
+                "flight"
+              ]
+            },
+            "price": {
+              "type": "number"
+            },
+            "city": {
+              "type": "string"
+            },
+            "destination": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string",
+              "format": "date"
+            },
+            "time": {
+              "type": "string",
+              "format": "time"
+            },
+            "arrivalDate": {
+              "type": "string",
+              "format": "date"
+            },
+            "arrivalHour": {
+              "type": "string",
+              "format": "time"
+            }
+          },
+          "required": [
+            "id",
+            "type",
+            "price",
+            "city",
+            "destination",
+            "date",
+            "time",
+            "arrivalDate",
+            "arrivalHour"
+          ]
+        },
+        "Transaction": {
+          "type": "object",
+          "properties": {
+            "transactionId": {
+              "type": "number"
+            },
+            "routeId": {
+              "type": "number"
+            },
+            "price": {
+              "type": "number"
+            },
+            "date": {
+              "type": "string",
+              "format": "date"
+            },
+            "ticketId": {
+              "type": "number"
+            },
+            "completed": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "transactionId",
+            "routeId",
+            "price",
+            "date",
+            "ticketId",
+            "completed"
+          ]
+        }
+      }
+    }
+  }

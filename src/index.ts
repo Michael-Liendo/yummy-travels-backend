@@ -1,4 +1,6 @@
 import express from "express";
+import routesV1 from "./routes/routes.v1";
+import swaggerRouter from './swagger';
 
 const app: express.Application = express();
 const port = process.env.PORT || 8888;
@@ -7,6 +9,12 @@ const port = process.env.PORT || 8888;
 app.get("/", (req, res) => {
     res.send("Hello World!");
 });
+
+app.use(express.json());
+
+app.use(routesV1);
+
+app.use(swaggerRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`); 
