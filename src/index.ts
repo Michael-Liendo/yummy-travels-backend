@@ -22,7 +22,7 @@ app.use(routesV1);
 app.use(swaggerRouter);
 connectDB();
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Server is running on port http://localhost:${port}`);
 });
 
 export default app;
