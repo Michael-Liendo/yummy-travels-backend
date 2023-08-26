@@ -73,8 +73,35 @@
             },
             "date": {
               "type": "string",
-              "format": "date"
-            }
+              "format": "string"
+            },
+            "time": {
+                "type": "string",
+                "format": "string"            
+            },
+            "type": {
+                "type": "string",
+                "enum": [
+                    "bus",
+                    "ship",
+                    "flight"
+                ]
+            },
+            "city": {
+                "type": "string"
+                
+            },
+            "destination": {
+                "type": "string"
+            },
+            "arrivalDate": {
+                "type": "string",
+                "format": "string"
+            },
+            "arrivalHour": {
+                "type": "string",
+                "format": "string"
+            }        
           },
           "required": [
             "name",
