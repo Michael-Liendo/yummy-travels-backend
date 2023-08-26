@@ -34,6 +34,74 @@
               "description": "Internal Server Error"
             }
           }
+        },
+        "get": {
+          "summary": "Gets all booked trips",
+          "parameters": [
+            {
+              "name": "city",
+              "in": "query",
+              "description": "Filter trips by city",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "destination",
+              "in": "query",
+              "description": "Filter trips by destination",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "date",
+              "in": "query",
+              "description": "Filter trips by date",
+              "schema": {
+                "type": "string",
+                "format": "date"
+              }
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "description": "Limit the number of results",
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100
+              }
+            },
+            {
+              "name": "take",
+              "in": "query",
+              "description": "Takes the first n results",
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Trip"
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
         }
       },
       "/trip/transaction": {
@@ -119,7 +187,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/Trip"
+                      "$ref": "#/components/schemas/TripResponse"
                     }
                   }
                 }
@@ -167,6 +235,17 @@
             "count"
           ]
         },
+        "TripResponse": {
+          "type": "object",
+          "properties": {
+            "trip": {
+              "$ref": "#/components/schemas/Trip"
+            },
+            "availableSeats": {
+              "type": "integer"
+            }
+          }
+        },
         "TransactionResponse": {
           "type": "object",
           "properties": {
@@ -194,6 +273,9 @@
             },
             "price": {
               "type": "number"
+            },
+            "description": {
+              "type": "string"
             },
             "city": {
               "type": "string"
